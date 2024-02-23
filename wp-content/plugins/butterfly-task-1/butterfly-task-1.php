@@ -14,8 +14,19 @@ Author URI: https://butterfly.com/wp/plugins/task-1
 License: GPLv2 or later
 Text Domain: butterfly-task-1
 */
-// define all constant
-define("BUTTERFLY_PATH_VIEW", plugins_url("views", __FILE__));
+
+// constants
+define("BUTTERFLY_PATH", plugin_dir_url( __FILE__ ) );
 // include all essential files
-require_once(plugin_dir_path(__FILE__) . '/vendor/autoload.php');
-require_once(plugin_dir_path(__FILE__) . "/essentials/activation-class.php");
+require_once(plugin_dir_path(__FILE__) . '/includes/menu/menu-init.php');
+require_once(plugin_dir_path(__FILE__) . '/includes/ajax/butterfly-ajax.php');
+require_once(plugin_dir_path(__FILE__) . '/includes/shortcode/shortcode-init.php');
+require_once(plugin_dir_path(__FILE__) . '/essentials/activation-class.php');
+require_once(plugin_dir_path(__FILE__) . '/includes/assets.php');
+
+add_action('butterfly_before_form', function() {
+    echo "<h2>Welcome</h2>";
+});
+add_action('butterfly_after_form', function() {
+    echo "<h2>Bye</h2>";
+});

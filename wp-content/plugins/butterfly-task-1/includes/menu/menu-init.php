@@ -1,5 +1,6 @@
 <?php
 namespace Butterfly_Task_1\Menu;
+if ( !defined('ABSPATH') ) exit;
 /**
  * Create all essential menu and submenu in this class
  * 
@@ -7,7 +8,7 @@ namespace Butterfly_Task_1\Menu;
  * 
  * @since 1.0.0
  */
-die();
+
 class Menu_Init {
     // create an instance
     private static $_instance = null;
@@ -19,7 +20,7 @@ class Menu_Init {
      * @return static $_instance this function will return a static instance.
      */
     public function instance() {
-        if( !is_null( self::$_instance ) ) {
+        if( is_null( self::$_instance ) ) {
             self::$_instance = new self();
         }
         return self::$_instance;
@@ -66,7 +67,7 @@ class Menu_Init {
      */
     public function butterfly_task_callback() {
         ob_start();
-        include( BUTTERFLY_PATH_VIEW ."menu-task-panel");
+        include( ABSPATH ."wp-content/plugins/butterfly-task-1/views/menu-task-panel.php");
         echo ob_get_clean();
     }
 }

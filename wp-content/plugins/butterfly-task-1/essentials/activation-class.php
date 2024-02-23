@@ -7,6 +7,7 @@ namespace Butterfly_Task_1\Essentials;
  * 
  * @since 1.0.0
  */
+if ( !defined('ABSPATH') ) exit;
 class Activation_Class {
     // create an instance for class
     private static $_instance = null;
@@ -31,7 +32,7 @@ class Activation_Class {
      */
     public function __construct() {
         // register_activation_hook( __FILE__, array( $this,"register_menu" ) );
-        add_action("init", array( $this,"register_menu") );
+        add_action('plugins_loaded', array( $this,'register_menu') );
     }
     /**
      * Register Menu
@@ -43,7 +44,7 @@ class Activation_Class {
      * @return void
      */
     public function register_menu() {
-        new \Butterfly_Task_1\Menu\Menu_Init();
+        $menu_init = new \Butterfly_Task_1\Menu\Menu_Init();
     }
 }
 
